@@ -1,0 +1,359 @@
+% !TeX TXS-program:compile = txs:///pdflatex
+
+\documentclass[11pt,a4paper]{ltxdoc}
+\usepackage{crimson}
+\renewcommand*\ttdefault{cmvtt}
+\usepackage[T1]{fontenc}
+\usepackage{cabin}
+\usepackage{vectorlogos}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage{tabularray}
+\usepackage{fontawesome5}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\lfoot{\sffamily\small [vectorlogos]}
+\cfoot{\sffamily\small - \thepage{} -}
+\rfoot{\hyperlink{matoc}{\small\faArrowAltCircleUp[regular]}}
+\usepackage{hologo}
+\providecommand\tikzlogo{Ti\textit{k}Z}
+\providecommand\TeXLive{\TeX{}Live\xspace}
+\providecommand\PSTricks{\textsf{PSTricks}\xspace}
+\let\pstricks\PSTricks
+\let\TikZ\tikzlogo
+
+\usepackage{hyperref}
+\urlstyle{same}
+\hypersetup{pdfborder=0 0 0}
+\usepackage[margin=2cm]{geometry}
+\setlength{\parindent}{0pt}
+\def\TPversion{0.1.1}
+\def\TPdate{27/11/2023}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,hooks,listingsutf8}
+\usepackage{soul}
+\sethlcolor{lightgray!25}
+\NewDocumentCommand\MontreCode{ m }{%
+	\hl{\vphantom{\texttt{pf}}\texttt{#1}}%
+}
+
+\begin{document}
+
+\pagestyle{fancy}
+
+\thispagestyle{empty}
+
+\begin{center}
+	\begin{minipage}{0.88\linewidth}
+	\begin{tcolorbox}[colframe=yellow,colback=yellow!15]
+		\begin{center}
+			\begin{tabular}{c}
+				{\Huge \texttt{vectorlogos}}\\
+				\\
+				{\LARGE Insert, 'inline', vectorial,} \\
+				{\LARGE logos of 'classic' softwares.} \\
+				\\
+				{\small \texttt{Version \TPversion{} -- \TPdate}}
+		\end{tabular}
+		\end{center}
+	\end{tcolorbox}
+\end{minipage}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{c}
+	\texttt{Cédric Pierquet}\\
+	{\ttfamily c pierquet -- at -- outlook . fr}\\
+	\texttt{\url{https://github.com/cpierquet/vectorlogos}} \\
+\end{tabular}
+\end{center}
+
+\hrule
+
+\vfill
+
+\begin{tcolorbox}[colframe=lightgray,colback=lightgray!5]
+\begin{center}
+%\scalebox{4}[4]{\logopython}\hspace{1cm}\scalebox{4}[4]{\logopython[notm]}\hspace{1cm}\scalebox{4}[4]{\logopython[vertical]}
+%
+%\medskip
+%
+%\scalebox{4}[4]{\logopython[icon]}\hspace{1cm}\scalebox{4}[4]{\logopython[powh]}\hspace{1cm}\scalebox{4}[4]{\logopython[powv]}
+
+\medskip
+
+\scalebox{4}[4]{\logogeogebra}\hspace{1cm}\scalebox{4}[4]{\logogeogebra[icon]}
+
+\medskip
+
+\scalebox{4}[4]{\logoscratch}\hspace{1cm}\scalebox{4}[4]{\logoscratch[alt]}\hspace{1cm}\scalebox{4}[4]{\logoscratch[cat]}
+
+\medskip
+
+\scalebox{4}[4]{\logotexstudio}
+
+\medskip
+
+\scalebox{4}[4]{\logoemacs}\scalebox{4}[4]{\logoemacs[alt]}
+
+\medskip
+
+\scalebox{4}[4]{\logotexmaker}\scalebox{4}[4]{\logotexmaker[alt]}
+\end{center}
+\end{tcolorbox}
+
+\vfill~
+
+\hrule
+
+\medskip
+
+\emph{%
+Logos came with GNU GPL or CC BY-SA (3.0 or 4.0) license.\\
+Some brand icons/logos are trademarks of their respective owners. Please do not use brand icons/logos for any purpose except to represent the company, product, or service to which they refer.%\\
+%"Python" and the Python Logo are trademarks of the Python Software Foundation (\url{https://www.python.org/psf/trademarks/}).%
+}
+
+\medskip
+
+\hrule
+
+\vspace*{5mm}
+
+\pagebreak
+
+\phantomsection
+
+\hypertarget{matoc}{}
+
+\tableofcontents
+
+\vspace*{5mm}
+
+\hrule
+
+\vspace*{5mm}
+
+\section{Introduction}
+
+\subsection{Description, loading}
+
+With this package you can insert inline (vectorial) logos of 'classic' softwares.
+
+The format of the logos is \textsf{pdf}, from \textsf{svg} files (given by \textsf{GNU GPL} or \textsf{CC-BY-3.0} licenses).
+
+\medskip
+
+Each logo can be integrated within a classic \MontreCode{\textbackslash includegraphics} command.
+
+The package provides macros to insert them \textit{inline}, with automatic height and alignment.
+
+\medskip
+
+To load the package, simply use :
+
+\begin{quote}
+\begin{verbatim}
+\usepackage{vectorlogos}
+\end{verbatim}
+\end{quote}
+
+\subsection{Available logos, by name, for manual insertion}
+
+Available logos are :
+
+\medskip
+
+\begin{tblr}{width=\linewidth,colspec={Q[m,l]Q[l,m]X[m,l]},cells={font=\LARGE\ttfamily,bg=teal!5},column{1}={font=\LARGE\bfseries\sffamily}}
+%	python 		& vectorlogo-python.pdf 			& \logopython\ 			\\
+%				& vectorlogo-python-icon.pdf		& \logopython[icon]		\\
+%				& vectorlogo-python-notm.pdf		& \logopython[notm]		\\
+%				& vectorlogo-python-powh.pdf		& \logopython[powh]		\\
+%				& vectorlogo-python-powv.pdf		& \logopython[powv]		\\
+%				& vectorlogo-python-vertical.pdf	& \logopython[vertical]	\\
+	\hline
+	emacs 		& vectorlogo-emacs.pdf 			& \logoemacs\ 			\\
+				& vectorlogo-emacs-alt.pdf		& \logoemacs[alt]		\\
+	\hline
+	geogebra	& vectorlogo-geogebra.pdf 		& \logogeogebra\		\\
+				& vectorlogo-geogebra-icon.pdf	& \logogeogebra[icon]	\\
+	\hline
+	scratch		& vectorlogo-scratch.pdf 			& \logoscratch\			\\
+				& vectorlogo-scratch-alt.pdf		& \logoscratch[alt]	\\
+				& vectorlogo-scratch-cat.pdf		& \logoscratch[cat]	\\
+	\hline
+	texmaker	& vectorlogo-texmaker.pdf			& \logotexmaker\		\\
+				& vectorlogo-texmaker-alt.pdf		& \logotexmaker[alt]	\\
+	\hline
+	texstudio	& vectorlogo-texstudio.pdf		& \logotexstudio\		\\
+\end{tblr}
+
+\pagebreak
+
+\section{The macros}
+
+\subsection{A simple generic macro}
+
+In order to insert a vectorial logo, simpy use :
+
+\begin{quote}
+\begin{verbatim}
+\simplevectorlogo[options includegraphics]{name}
+\end{verbatim}
+\end{quote}
+
+There's no automatic height or raising, it's just an \textit{alias} of a classic \MontreCode{\textbackslash includegraphics} with the given names of the precedent tabular.
+
+%\begin{tcblisting}{}
+%\simplevectorlogo[height=1.5cm]{scratch}\par
+%\simplevectorlogo[height=4cm]{scratch-cat}\par
+%\simplevectorlogo{python-vertical}\par
+%\simplevectorlogo[scale=0.33]{texstudio}\par
+%\simplevectorlogo{emacs}\par
+%\simplevectorlogo[width=3cm]{geogebra-icon}
+%\end{tcblisting}
+
+\begin{tcblisting}{}
+\simplevectorlogo[height=1.5cm]{scratch}\par
+\simplevectorlogo[height=4cm]{scratch-cat}\par
+\simplevectorlogo[scale=0.33]{texstudio}\par
+\simplevectorlogo{emacs}\par
+\simplevectorlogo[width=3cm]{geogebra-icon}
+\end{tcblisting}
+
+\pagebreak
+
+\subsection{A generic inline macro}
+
+In order to insert a vectorial logo inline, simpy use :
+
+\begin{quote}
+\begin{verbatim}
+\vectorlogo[option]{name}
+\end{verbatim}
+\end{quote}
+
+The height (automatically calculated) of the logo is given by :
+
+\begin{itemize}
+	\item 90\,\% of the box \fbox{qB} in the current font ;
+	\item raised 5\,\% bottom of the depth of \fbox{q} in the current font.
+\end{itemize}
+
+Available \textsf{names} are :
+
+\begin{multicols}{3}
+	\begin{itemize}
+		%\item \texttt{python}
+		\item \texttt{emacs}
+		\item \texttt{geogebra}
+		\item \texttt{scratch}
+		\item \texttt{texmaker}
+		\item \texttt{texstudio}
+	\end{itemize}
+\end{multicols}
+
+Available \textsf{options} are given by the suffix of alt logos.
+
+%\begin{tcblisting}{}
+%%classic size and fonte :
+%For example, it's a vectorial logo \vectorlogo{python} with inline insertion.
+%\end{tcblisting}
+
+\begin{tcblisting}{}
+%other font and other size
+{\Large\sffamily For example, it's a vectorial logo \vectorlogo[icon]{geogebra} with inline insertion.}
+\end{tcblisting}
+
+\begin{tcblisting}{}
+%other font and other size
+\scalebox{3.25}[3.25]{\ttfamily The cat \vectorlogo[cat]{scratch} logo, inline !}
+\end{tcblisting}
+
+\subsection{Special commands}
+
+There's an other (shortcut) way to insert logos, with a shortcut-name, like in \textsf{fontawesome5} :
+%\logopython[option]
+
+\begin{quote}
+\begin{verbatim}
+\logoscratch[option]
+\logogeogebra[option]
+\logotexstudio[option]
+\logoemacs[option]
+\logotexmaker[option]
+\end{verbatim}
+\end{quote}
+
+Available options are given by the suffix of alt logos.
+
+\pagebreak
+
+\section{Samples}
+
+\begin{tcblisting}{listing only}
+%useful macro
+\newcommand\samplevectorlogo[1]{{\LARGE Inline {#1} logo}\par}
+\end{tcblisting}
+
+\newcommand\samplevectorlogo[1]{{\LARGE Inline {#1} logo}\par}
+
+\begin{tcblisting}{listing side text}
+\samplevectorlogo{\logogeogebra}
+\end{tcblisting}
+
+\begin{tcblisting}{listing side text}
+\samplevectorlogo{\logogeogebra[icon]}
+\end{tcblisting}
+
+\begin{tcblisting}{listing side text}
+\samplevectorlogo{\logoscratch}
+\end{tcblisting}
+
+\begin{tcblisting}{listing side text}
+\samplevectorlogo{\logoscratch[alt]}
+\end{tcblisting}
+
+\begin{tcblisting}{listing side text}
+\samplevectorlogo{\logoscratch[cat]}
+\end{tcblisting}
+
+\begin{tcblisting}{listing side text}
+\samplevectorlogo{\logotexstudio}
+\end{tcblisting}
+
+\begin{tcblisting}{listing side text}
+\samplevectorlogo{\logoemacs}
+\end{tcblisting}
+
+\begin{tcblisting}{listing side text}
+\samplevectorlogo{\logoemacs[alt]}
+\end{tcblisting}
+
+\begin{tcblisting}{listing side text}
+\samplevectorlogo{\logotexmaker}
+\end{tcblisting}
+
+\begin{tcblisting}{listing side text}
+\samplevectorlogo{\logotexmaker[alt]}
+\end{tcblisting}
+
+%\samplevectorlogo{\logopython}
+%\samplevectorlogo{\logopython[notm]}
+%\samplevectorlogo{\logopython[vertical]}
+%\samplevectorlogo{\logopython[icon]}
+%\samplevectorlogo{\logopython[powh]}
+%\samplevectorlogo{\logopython[powv]}
+
+\vfill~
+
+\section{History}
+
+\begin{quote}
+\begin{verbatim}
+0.1.1 : Update licenses
+0.1.0 : Initial version
+\end{verbatim}
+\end{quote}
+
+\end{document}
