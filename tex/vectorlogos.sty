@@ -14,9 +14,10 @@
 
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{vectorlogos}[2023/11/27 0.1.1 Vectorial logos of 'classic' softwares, for inline use.]
+\ProvidesPackage{vectorlogos}[2023/11/29 0.1.2 Vectorial logos of 'classic' softwares, for inline use.]
 
 %====HISTORY
+% v 0.1.2	Alt command for manual insertion, with existing img
 % v 0.1.1	Licenses update
 % v 0.1.0	Initial Version
 
@@ -30,9 +31,9 @@
 \newlength{\tmp@logosvg@depth}
 
 %====MACRO CREATOR
-\NewDocumentCommand\GenMacroLogoVect{ m m }{%1=macro,2=base,3=default
+\NewDocumentCommand\GenMacroLogoVect{ m m }{%1=macro,2=base
 	\NewDocumentCommand#1{ O{} }{%
-		\settototalheight{\tmp@logosvg@total@height}{\hbox{qB}}%
+		\settototalheight{\tmp@logosvg@total@height}{\hbox{ABCDEFGHIJKLMNOPQQRSTUVWXYZabcdefghijklmnopqqrstuvwxyz}}%
 		\settodepth{\tmp@logosvg@depth}{\hbox{q}}%
 		\IfFileExists{vectorlogo-#2-##1.pdf}%
 			{%
@@ -45,17 +46,37 @@
 }
 
 %====SIMPLE MACRO
-\NewDocumentCommand\simplevectorlogo{ O{} m }{%
-	\IfFileExists{vectorlogo-#2.pdf}%
+\NewDocumentCommand\simplevectorlogo{ s O{} m }{%
+	\IfBooleanTF{#1}%
 		{%
-			\includegraphics[#1]{vectorlogo-#2.pdf}%
+			\IfFileExists{vectorlogo-#3.pdf}%
+				{%
+					\includegraphics[#2]{vectorlogo-#3.pdf}%
+				}%
+				{}%
 		}%
-		{}%
+		{%
+			\IfStrEq{#2}{}%
+				{%
+					\def\tmp@raiseper@logo{0.9}%
+				}%
+				{%
+					\def\tmp@raiseper@logo{#2}%
+				}%
+			\IfFileExists{#3}%
+				{%
+					%2=percent of height of box qB
+					\def\tmp@raise@logo{\fpeval{(1-\tmp@raiseper@logo)*0.5}}%
+					\settototalheight{\tmp@logosvg@total@height}{\hbox{ABCDEFGHIJKLMNOPQQRSTUVWXYZabcdefghijklmnopqqrstuvwxyz}}%
+					\settodepth{\tmp@logosvg@depth}{\hbox{q}}%
+					\raisebox{-\tmp@logosvg@depth+\tmp@raise@logo\tmp@logosvg@total@height}{\includegraphics[height=\tmp@raiseper@logo\tmp@logosvg@total@height]{#3}}%
+				}%
+				{}%
+		}%
 }
 
 %====GENERIC MACROS
-\NewDocumentCommand\vectorlogo{ O{logo} m }{%
-	%\IfEq{#2}{python}{\logopython[#1]}{}%
+\NewDocumentCommand\vectorlogo{ O{} m }{%
 	\IfEq{#2}{scratch}{\logoscratch[#1]}{}%
 	\IfEq{#2}{geogebra}{\logogeogebra[#1]}{}%
 	\IfEq{#2}{texstudio}{\logotexstudio[#1]}{}%
@@ -64,7 +85,6 @@
 }
 
 %====SPECIFIC MACROS
-%\GenMacroLogoVect{\logopython}{python}
 \GenMacroLogoVect{\logoscratch}{scratch}
 \GenMacroLogoVect{\logogeogebra}{geogebra}
 \GenMacroLogoVect{\logotexstudio}{texstudio}
